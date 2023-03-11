@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { dataMovie } from './Data';
+import MovieList from './components/MovieList';
+import AddNewmovie from'./components/AddNewMovie';
+import Search from './components/Search';
 
 function App() {
+const [list,setList] = useState(dataMovie)
+const handleAdd=(NewMovie)=>setList([...list,NewMovie])
+const [text, setText] = useState("")
+const [rating, setRating] = useState(1)
+// console.log(list)
+const handletext=(x)=> setText(x)
+const handlerating=(y)=> setRating(y)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MovieList data={list.filter(el=>el.title.includes(text))}/>
+      <AddNewmovie  handleAdd={handleAdd}/>
+      <Search rating={rating} text={text} handletext={handletext} handlerating={handlerating}/>
     </div>
   );
 }

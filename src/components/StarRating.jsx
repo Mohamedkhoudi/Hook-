@@ -10,7 +10,7 @@ const StarRating = ({rating,handlerating}) => {
     }
   return (
     <div>
-      {stars(rating)}
+      {React.Children.toArray(stars(rating))}
     </div>
   )
 }

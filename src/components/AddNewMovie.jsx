@@ -36,14 +36,14 @@ const handleSubmit=(e)=>{
       function closeModal() {
         setIsOpen(false);}
   return (
-    <div>
-       <button onClick={openModal} style={{color:"red"}}>Add</button>
+    <div className='AddMov'>
+       <button onClick={openModal} style={{color:"black"}}>Add</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="Forma">
 <label >Movie Name</label>
 <input type="text" value={title} onChange={e=> setTitle(e.target.value)}/>
 <label>Movie poster</label>
